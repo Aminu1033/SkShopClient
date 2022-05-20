@@ -1,0 +1,66 @@
+<h4 class="py-4 text-muted text-center">Register</h4>
+
+<div class="offset-md-2 col-md-8" mb-4>
+
+    <form class="form" [formGroup]="userFormGroup" (ngSubmit)="onSubmit()" class="border bg py-2 px-4 shadow rounded">
+        <div class="form-group">
+            <label for="firstname">First Name:</label>
+            <br />
+            <input type="text" id="firstname" formControlName="firstName" placeholder="firstname..."
+                class="form-control" />
+
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <br />
+            <input type="text" id="lastName" formControlName="lastName" placeholder="lastName..."
+                class="form-control" />
+
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <br />
+            <input type="password" id="password" formControlName="password" placeholder="password..."
+                class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <br />
+            <input type="email" id="email" formControlName="email" placeholder="email..." class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <br />
+            <input type="tel" id="phoneNumber" formControlName="phoneNumber" placeholder="phoneNumber..." class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="zipcode">Address:</label>
+            <br />
+            <input type="text" id="address" formControlName="address" placeholder="address..." class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="zipcode">zipcode:</label>
+            <br />
+            <input type="text" id="zipcode" formControlName="zipcode" placeholder="zipcode..." class="form-control" />
+        </div>
+        <div class="form-group d-none">
+            <label for="registerDate">RegisterDate:</label>
+            <br />
+            <input type="text" id="registerDate" formControlName="registerDate" placeholder="Date Created..."
+                class="form-control" />
+
+        </div>
+
+
+        <!-- form actions -->
+        <div class="form-group py-3">
+            <button type="submit" mat-button (click)="onSubmit()"
+                class="mat-elevation-z6 mr-2" [disabled]="userFormGroup.invalid">
+                Register
+            </button>
+            <a mat-button class="mat-elevation-z6" [routerLink]="['/']">
+                Cancel
+            </a>
+        </div>
+    </form>
+</div>

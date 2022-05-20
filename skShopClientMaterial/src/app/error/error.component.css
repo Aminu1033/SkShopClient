@@ -1,0 +1,9 @@
+.not-found{
+    color: #d84e08;   
+    background: rgb(193, 212, 230);
+    margin-top: 4rem; 
+}
+
+.erro-text{
+    font-size: 8rem;
+} 

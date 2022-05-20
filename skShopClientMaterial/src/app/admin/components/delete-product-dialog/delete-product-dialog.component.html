@@ -1,0 +1,8 @@
+<h1 mat-dialog-title class="text-danger">Are you sure to delete?</h1>
+<div mat-dialog-content>  
+Click Yes to delete or Cancel to go back to admin page. 
+</div>
+<div mat-dialog-actions>
+    <button class="btn btn-small btn-danger mr-2 mat-elevation-z4" [mat-dialog-close]="{clicked: 'ok'}">Yes</button>
+    <button class="btn btn-small btn-success mat-elevation-z4" [mat-dialog-close]="{clicked: 'cancel'}">Cancel</button>
+</div>

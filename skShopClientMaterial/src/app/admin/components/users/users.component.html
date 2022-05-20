@@ -1,0 +1,43 @@
+<h3 class="text-center text-muted py-4">Users Table</h3>
+
+<table class="table table-sm text-center bordered table-striped">
+    <thead>
+        <tr>
+            <!-- <th scope="col">Id</th> -->
+            <th scope="col">Full Name</th>
+            <th scope="col">UserName</th>
+            <!-- <th scope="col">Email</th> -->
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">Zipcode</th>
+            <th scope="col">Orders</th>
+            <th scope="col">registerDate</th>
+        </tr>
+    </thead> 
+    <tbody *ngIf="users.length">
+        <tr *ngFor="let user of users">
+            <!-- <td>{{user.id? user.id : 'null' }}</td> -->
+            <td>{{user.fullName? user.fullName : 'null' }}</td>
+            <td>{{user.userName? user.userName : 'null' }}</td>
+            <!-- <td>{{user.email? user.email : 'null' }}</td> -->
+            <td>{{user.phoneNumber? user.phoneNumber : 'null' }}</td>
+            <td>{{user.address? user.address : 'null' }}</td>
+            <td>{{user.zipcode? user.zipcode : 'null' }}</td>
+            <td>{{user.numberOfOrders? user.numberOfOrders : 'null' }}</td>
+            <td>{{user.registerDate? user.registerDate : 'null' }}</td>
+            <td class="actions">
+                <!-- <a [routerLink]="['/detail', user.id]"class="mat-elevation-z4 mt-1 btn btn-sm btn-outline-dark mr-1">Detail</a> -->
+                <a [routerLink]="['users', user.id, 'edit']"
+                    class="mat-elevation-z4 mt-1 btn btn-sm btn-success mr-1">Edit</a>
+                <a [routerLink]="['users', user.id, 'delete']"
+                    class="mat-elevation-z4 mt-1 btn btn-sm btn-danger">Delete</a>
+
+            </td>
+        </tr>
+    </tbody>
+    <tr *ngIf="!users.length">
+        <td colspan="10" class="text-center py-4 text-color">
+            <h3>No Users Available</h3>
+        </td>
+    </tr>
+</table>

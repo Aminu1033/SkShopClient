@@ -1,0 +1,51 @@
+<h3 class="text-center text-muted py-4">Products Table</h3>
+
+<table class="table table-sm table-sm-font-size text-center bordered table-striped">
+    <thead>
+        <tr>
+            <!-- <th scope="col">Id</th> -->
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Image</th>
+            <th scope="col">Category</th>
+            <th scope="col">Available</th>
+            <th scope="col">Is instock</th>
+            <th scope="col">Is hot</th>
+            <th scope="col">Discount</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody *ngIf="products.length">
+        <tr *ngFor="let product of products">
+            <!-- <td>{{product.id}}</td> -->
+
+            <td>
+                <a class="detail-color" [routerLink]="['/detail', product.id]" >{{product.name}}</a>
+            </td>
+            <td>{{product.price | currency:'USD':'symbol':'1.2'}}</td>
+            <td>
+                <a class="detail-color" [routerLink]="['/detail', product.id]" >
+                    <img src="{{product.imgUrl}}" class="img-thumbnail" asp-append-version="true"
+                        alt="unable to load image" />
+                </a>
+            </td>
+            <td>{{product.categoryName}}</td>
+            <td>{{product.amountAvailable}}</td>
+            <td>{{product.isInstock}}</td>
+            <td>{{product.isHot}}</td>
+            <td>{{product.discount}}</td> 
+            <td class="actions">
+                <!-- <a [routerLink]="['/detail', product.id]"class="mat-elevation-z4 mt-1 btn btn-sm btn-outline-dark">Detail</a> -->
+                <a [routerLink]="['products', product.id, 'edit']"   class="mat-elevation-z4 mt-1 btn btn-sm btn-success">Edit</a>
+                <button (click)="deleteProduct(product.id)" class="mat-elevation-z4 mt-1 btn btn-sm btn-danger">Delete</button>
+                 
+            </td>
+        </tr>        
+    </tbody>
+    <tr *ngIf="!products.length">
+        <td colspan="10" class="text-center py-4 text-color">
+            <h3>No Products Available</h3>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,27 @@
+.brand{
+    color: #fff !important;
+}
+
+.primary-dark {
+    background: #212836;
+}
+
+.primary-light {
+    background: #454F5B;
+}
+
+.secondary-dark {
+    background: #C4CDD5;
+}
+
+.secondary-light {
+    background: #DFE3E8;
+}
+
+.secondary-lighter {
+    background: #F4F6F8;
+}
+
+.accent-color {
+    background: #d84e08;
+} 

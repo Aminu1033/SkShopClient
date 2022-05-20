@@ -1,0 +1,9 @@
+.text-color{
+    color: #d84e08;
+} 
+@media(max-width: 580px){
+        
+    .table-sm-font-size{
+        font-size: xx-small;
+    }
+}

@@ -1,0 +1,28 @@
+.product-list-container{
+    margin-top: 3rem; 
+    padding-bottom: 3rem;
+}
+
+  
+
+.text-color{
+    color: #d84e08!important;  
+}
+button{
+    color: #d84e08;  
+}
+
+button:hover{    
+    color:#fff; 
+    background: #454F5B;
+}
+.active{    
+    color:#fff; 
+    background: #454F5B;
+}
+ 
+
+.price-initial{
+    text-decoration:line-through;
+}
+

@@ -1,0 +1,28 @@
+<h3 class="py-4 text-muted">{{isEditMode ? "Edit Category" : "Add New Category"}}</h3>
+<div mat-dialog-content>
+    <form autocomplete="off" [formGroup]="categoryFormGroup" (ngSubmit)="onSubmit()" class="border py-2 px-4 shadow rounded">
+        <input type="text" id="id" formControlName="id"  hidden />
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <br />
+            <input type="text" id="name" formControlName="name" placeholder="Category name..." class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <br />
+            <input type="text" id="description" formControlName="description" placeholder="Description..."
+                class="form-control" />
+        </div>
+        <!-- form actions -->
+        <div class="form-group py-3">
+            <button type="submit"  
+             mat-button [disabled]="categoryFormGroup.invalid" (click)="onSubmit()"
+                class="mat-elevation-z6 mr-2">
+                Submit
+            </button>
+            <button mat-button class="mat-elevation-z6" [routerLink]="['/admin']">
+                Cancel
+            </button>
+        </div>
+    </form>
+</div>

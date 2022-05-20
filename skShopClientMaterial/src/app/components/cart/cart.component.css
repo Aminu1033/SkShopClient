@@ -1,0 +1,37 @@
+.image-thumbnail{
+    max-width: 4rem;
+}
+
+.align-subtotal-end{ 
+    text-align: end;
+    font-size: 2rem;
+    color:#d84e08;
+}
+i{
+    color: #d84e08;
+    cursor: pointer;
+}
+
+.order-btn{
+    color: #d84e08;
+    font-size: 1.6rem;
+    padding: 0.3rem;
+}
+
+.clear-cart-btn{
+    background: #d84e08;
+    color: whitesmoke;
+    font-size: 1.6rem;
+    padding: 0.3rem;
+}
+
+#detail-link{
+    color: #d84e08;
+}
+
+@media(max-width: 580px){
+        
+    .table-sm-font-size{
+        font-size: xx-small;
+    }
+}

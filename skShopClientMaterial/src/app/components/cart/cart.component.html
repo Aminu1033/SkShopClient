@@ -1,0 +1,47 @@
+<h4 class="text-muted text-center py-3">Cart Summary</h4>
+<table class="table table-sm table-sm-font-size text-center table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of cartService.order.cartItems" class=" text-center">
+            <td>
+                <a [routerLink]="['/detail', item.productId]">
+                    <img src="{{item.productImgUrl}}" class="image-thumbnail" alt="{{item.productId}}">
+                </a>
+            </td>
+            <td><a id="detail-link" [routerLink]="['/detail', item.productId]">{{item.productName}}</a></td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.productPrice | currency:'USD':'symbol':'1.2' }}</td>
+            <td>{{item.quantity * item.productPrice | currency:'USD':'symbol':'1.2'}}</td>
+            <td>
+                <i (click)="cartService.deleteCartItem(item.productId)" class="fas fa-trash pr-1"></i>
+            </td>
+        </tr>
+        <tr *ngIf="!cartService.order.cartItems.length">
+            <td colspan="6">
+                <h4>There is no item in your cart.</h4>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" class="align-subtotal-end">
+                <strong>SubTotal: {{cartService.getSubTotal() | currency:'USD':'symbol':'1.2'}}</strong>
+            </td>
+        </tr>
+    </tbody>    
+</table>
+<div class="text-center">
+    <button mat-button class="mat-elevation-z3 order-btn my-4" [disabled]="!cartService.order.cartItems.length">
+        Complete order
+    </button>
+    <button mat-button class="mat-elevation-z3 clear-cart-btn my-4 ml-2" (click)="clearCart()" [disabled]="!cartService.order.cartItems.length">
+        Clear cart
+    </button>
+</div>

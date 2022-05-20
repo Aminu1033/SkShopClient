@@ -1,0 +1,110 @@
+<div class=" product-list-container">
+    <!-- <h1 class="text-center text-muted pb-4">Products</h1> -->
+    <div class="form w-100 mr-1 mat-elevation-z3 p-3" [formGroup]="searchAndPaginationForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group form-inline text-color">
+                    <input class="form-control search-control text-color mt-1 mr-2" placeholder="Enter search Term..."
+                        formControlName="searchQuery" for="searchQuery" />
+                    <!-- <button type="submit" (click)="onSubmit()"  class="btn btn-outline-dark mt-1">Search</button> -->
+                    <span class="mx-1"></span>
+                    <label for="exact">
+                        <input type="checkbox" name="exact" id="exact" class="mr-1 mt-1" formControlName="exact">
+                        Exact
+                    </label>
+                </div> 
+            </div>
+            <div class="col-md-8 col-sm-12">
+                <div class="form-group form-inline">
+                    <select name="category" id="categoryNames" formControlName="category" class="form-control mt-1">
+                        <option value="" selected class="text-color">All categories</option>
+                        <option *ngFor="let cat of categoryNames" class="text-color">{{cat}}</option>
+                    </select>
+                    <span class="mx-1"></span>
+                    <label for="noPaging" class="text-color">
+                        <input type="checkbox" name="noPaging" id="noPaging" class="mr-1 mt-1"
+                            formControlName="noPaging">
+                        No paging
+                    </label>
+                    <span class="mx-1"></span>
+                    <select name="pageSizes" id="pageSizes" formControlName="pageSize" class="form-control mt-1">
+                        <option value="20" selected class="text-color">Page size</option>
+                        <option *ngFor="let pageSize of pageSizes" class="text-color">{{pageSize}}</option>
+                    </select>
+                    <span class="ml-1"></span>
+                    <label for="pageNumber" class="text-color">
+                        <input type="number" name="pageNumber" required min="1" max="{{pagingParams?.TotalPages}}"
+                            id="pageNumber" class="mr-1 mt-1 form-control" value="0" formControlName="pageNumber">
+                        Page Number
+                    </label>
+                    <span class="mx-1"></span>
+                    <select name="color" id="color" formControlName="color" class="form-control mt-1">
+                        <option value="" selected class="text-color">All colors</option>
+                        <option *ngFor="let color of colors" class="text-color">{{color}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <h6 class="text-muted pt-3">Note: Selecting "No paging" loads all items from the back end API
+            and ignore all filters except the category filter.</h6>
+    </div>
+    <div *ngIf="products.length" class="text-center my-4 text-muted">
+
+        <div *ngIf="!searchAndPaginationForm.controls['noPaging'].value">
+            <h3>Check Out Our {{pagingParams?.TotalCount}}
+                Products Available:</h3>
+            <h6 class="text-color">Showing {{pagingParams?.PageSize}} items per page: Page
+                {{pagingParams?.CurrentPage}} of {{pagingParams?.TotalPages}}</h6>
+        </div>
+
+        <div *ngIf="searchAndPaginationForm.controls['searchQuery'].value">
+            <p>Showing {{products.length}} items matching:
+                <span class="text-color">"{{searchAndPaginationForm.controls['searchQuery'].value}}"</span>
+            </p>
+        </div>
+
+        <div *ngIf="searchAndPaginationForm.controls['noPaging'].value">
+            <h4>Showing Total Store Items of {{products.length}} Products.</h4>
+        </div>
+
+    </div>
+    <div *ngIf="!products.length">
+        <div *ngIf="searchAndPaginationForm.controls['searchQuery'].value">
+            <h5 class="text-color my-5">
+                No product(s) matched : "{{searchAndPaginationForm.controls['searchQuery'].value}}" search term, try
+                another phrase/word.
+            </h5>
+        </div>
+        <div *ngIf="!searchAndPaginationForm.controls['searchQuery'].value">
+            <h3 *ngIf="!searchAndPaginationForm.controls['color'].value" class="text-color py-2">No Items Available</h3>
+            <h3 *ngIf="searchAndPaginationForm.controls['color'].value" class="text-color py-2">No item(s) available
+                with "{{searchAndPaginationForm.controls['color'].value}}" color.</h3>
+        </div>
+    </div>
+    <div *ngIf="products.length" class="row text-center">
+
+        <div *ngFor="let product of products" class="col-sm-6 col-md-4 col-lg-3 mt-2">
+
+            <div class="card item-card mat-elevation-z3">
+                <div class="card-body">
+                    <div class="card-img">
+                        <a [routerLink]="['/detail', product.id]">
+                            <img src='{{product.imgUrl}}' class="img-thumbnail" alt="1.jpg" />
+                        </a>
+                    </div>
+                    <div>
+                        <h6>{{product.name}}</h6>
+                    </div>
+                    <div class="mb-1">
+                        <span class="font-weight-normal">Price: {{product.price | currency:'USD':'symbol':'1.2-2'}}
+                        </span>
+                        <span class="text-muted price-initial font-weight-lighter">Initial: {{150 |
+                            currency:'USD':'symbol':'1.2'}}</span>
+                    </div>
+                    <button (click)="cartService.addToCart(product)" class="mat-elevation-z3" mat-button>
+                        <i class="fas fa-cart-plus pr-1"></i>Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

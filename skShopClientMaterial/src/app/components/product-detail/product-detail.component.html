@@ -1,0 +1,29 @@
+<h3 class="text-center text-muted my-4">{{product.name}}</h3>
+
+<div class="container pb-4">
+    <div class="offset-md-2 col-md-8 col-sm-12">
+        <div class="card mb-3 text-center">
+            <img src="{{product.imgUrl}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5>Price : {{product.price | currency:'USD':'symbol':'1.2'}}</h5>
+                <h5>Color : {{product.color}}</h5>
+                <div>
+                    <h6>Short Description</h6>
+                    <p>{{product.shortDescription}}</p>
+
+                    <h6>Long Description</h6>
+                    <p>{{product.longDescription}}</p>
+                    <h6>Amount Available : {{product.amountAvailable}}</h6>
+                    <h6>Is Item of the Week : {{product.isItemOfTheWeek}}</h6>
+                    <h6>Date Created : {{product.dateCreated}}</h6>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button [routerLink]="['/']"  mat-button class="mat-elevation-z3 mt-1">Back to home page</button>
+                <button (click)="cartService.addToCart(product)" class="mat-elevation-z3 mt-1" mat-button>
+                    <i class="fas fa-cart-plus pr-1"></i>Add to cart</button> 
+
+            </div>
+        </div>
+    </div>
+</div>

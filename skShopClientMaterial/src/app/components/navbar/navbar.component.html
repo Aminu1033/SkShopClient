@@ -1,0 +1,25 @@
+<mat-toolbar class="navbar mat-elevation-z10">
+    <button class="sidenav-toggle-button" (click)="toggleSidenav.emit()">
+        <span class="menu-icon"><i class="fas fa-align-right pr-1"></i></span>
+    </button>
+    <span class="brand">
+        SkShop
+    </span>
+    <a [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">
+        Home
+    </a>
+    <span class="strechable-space"></span>
+    <span class="nav-link">                
+        <!-- <a [routerLink]="['/login']" routerLinkActive="active">Login</a> -->
+        <a [routerLink]="['/cart']" routerLinkActive="active">
+            <span class="cart-icon">
+                <i class="fas fa-cart-plus pr-1">
+                    <span class="cart-icon-number">
+                        {{cartService.order.cartItems.length}} item(s) 
+                        SubTotal: {{cartService.getSubTotal() |  currency:'USD':'symbol':'1.2'}}
+                    </span>
+                </i>
+            </span>
+        </a>
+    </span>
+</mat-toolbar>

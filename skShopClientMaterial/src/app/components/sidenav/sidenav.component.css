@@ -1,0 +1,84 @@
+.sidenav-toolbar{
+    background: #212836;
+}
+
+.sidenav-container{   
+
+    flex: 1;
+    position: fixed;
+
+    height: 100%;
+    min-height: 100%;
+
+    width: 100%;
+    min-width: 100%;
+ 
+}
+
+.sidenav-content{
+    /* margin-top: 5rem;
+    display: flex; 
+    flex-direction: column;*/
+    height: 100%;
+}
+
+.sidenav{    
+    background: rgb(193, 212, 230);
+    width: 240px;
+}
+
+
+a{
+    color: rgb(102, 101, 101);
+    padding: .3em; 
+}
+
+a:hover{
+    text-decoration: none;
+    color:#d84e08;
+    border-radius: 5px;
+    background: #454F5B;
+}
+
+.active{
+    text-decoration: none;
+    color:#d84e08;
+    border-radius: 5px;
+    background: #454F5B;
+}
+ 
+.cart-icon{
+    color: #d84e08;  
+}
+
+.cart-icon-number{
+    background: #fff;
+    color: #d84e08;
+    padding: .1rem;    
+    border-radius: 5%; 
+    font-size: .75em;
+    margin-left: .2rem;
+    margin-top: -2rem;  
+}
+
+.spinner{
+    border: 16px solid #212836;
+    border-top: 16px solid #d84e08;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 700ms linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 50000000;
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

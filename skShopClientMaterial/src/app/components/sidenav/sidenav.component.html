@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav mat-elevation-z10" [opened]="!isScreenSmall"
+        [mode]="isScreenSmall ? 'over' : 'side'">
+        <mat-toolbar class="sidenav-toolbar mat-elevation-z10">
+            <span class="brand">
+                Menu
+            </span>
+        </mat-toolbar>
+        <mat-list class="sidenav-list">
+            <mat-list-item>
+                <a [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                    <i class="fas fa-home pr-1"></i>Home</a>
+            </mat-list-item>
+
+
+            <mat-list-item>
+                <a [routerLink]="['/login']" routerLinkActive="active">
+                    <i class="fas fa-sign-in-alt pr-1"></i>Login</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a [routerLink]="['/register']" routerLinkActive="active">
+                    <i class="fas fa-user pr-1"></i>Register</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a [routerLink]="['/contact']" routerLinkActive="active">
+                    <i class="fas fa-phone pr-1"></i>Contact us</a>
+            </mat-list-item>
+
+
+            <mat-list-item>
+                <a [routerLink]="['/admin']" routerLinkActive="active">
+                    <i class="fas fa-user-cog pr-1"></i>Admin</a>
+            </mat-list-item>
+
+
+            <mat-list-item>
+                <a [routerLink]="['/cart']" routerLinkActive="active">
+                    <span class="cart-icon">
+                        <i class="fas fa-cart-plus pr-1">
+                            <span class="cart-icon-number">
+                                {{cartService.order.cartItems.length}}
+                                item(s)
+                                Amount: {{cartService.getSubTotal() | currency:'USD':'symbol':'1.2'}}
+                            </span>
+                        </i>
+                    </span>
+                </a>
+            </mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+
+    <div class="sidenav-content">
+        <app-navbar (toggleSidenav)="sidenav.toggle()"></app-navbar>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</mat-sidenav-container>

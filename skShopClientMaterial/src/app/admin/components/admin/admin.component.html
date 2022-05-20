@@ -1,0 +1,56 @@
+<h2 class="text-center text-muted py-4">Administration Page</h2>
+
+<div class="my-3">
+   <button [routerLink]="['products', 0, 'edit']" routerLinkActive="active"  class="mat-elevation-z6 mr-2 margin-top-sm"
+    mat-button>
+      <i class="fas fa-plus pr-1"></i>Create new product</button>
+   <button [routerLink]="['categories', 0, 'edit']" routerLinkActive="active"  class="mat-elevation-z6 margin-top-sm"
+   mat-button>
+      <i class="fas fa-plus pr-1"></i>Create new category</button>
+  <div class="offset-md-2 col-md-8">
+      <router-outlet></router-outlet>
+   </div>   
+
+   <hr/>   
+
+</div>
+<div class="admin-tabs">
+   <mat-tab-group class="mat-elevation-z6 admin-tabs-group">
+      <mat-tab>
+         <ng-template mat-tab-label>
+            <i class="fas fa-home pr-1"></i>
+            Products
+         </ng-template>
+         <div class="container">
+            <app-products></app-products>
+         </div>
+      </mat-tab>
+      <mat-tab>
+         <ng-template mat-tab-label>
+            <i class="fas fa-list pr-1"></i>
+            Categories
+         </ng-template>
+         <div class="container">
+            <app-categories></app-categories>
+         </div>
+      </mat-tab>
+      <mat-tab>
+         <ng-template mat-tab-label>
+            <i class="fas fa-users pr-1"></i>
+            Users
+         </ng-template>
+         <div class="container">
+            <app-users></app-users>
+         </div>
+      </mat-tab>
+      <mat-tab>
+         <ng-template mat-tab-label>
+            <i class="fas fa-cart-plus pr-1"></i>
+            Orders
+         </ng-template>
+         <div class="container">
+            <app-orders></app-orders>
+         </div>
+      </mat-tab>
+   </mat-tab-group>
+</div>

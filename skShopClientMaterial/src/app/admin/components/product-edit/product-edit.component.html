@@ -1,0 +1,95 @@
+<h3 class="py-4 text-muted">{{isEditMode ? "Edit Product" : "Add New Product"}}</h3>
+
+<form [formGroup]="productFormGroup" (ngSubmit)="onSubmit()" class="border py-2 px-4 shadow rounded">
+    <input type="text" id="id" formControlName="id" hidden />
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <br />
+        <input type="text" id="name" formControlName="name" placeholder="Name..." class="form-control" />
+
+    </div>
+    <div class="form-group">
+        <label for="color">Color:</label>
+        <br />
+        <input type="text" id="color" formControlName="color" placeholder="Color..." class="form-control" />
+
+    </div>
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <br />
+        <input type="number" id="price" formControlName="price" placeholder="Price..." class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="short-description">Short description:</label>
+        <br />
+        <textarea class="form-control" formControlName="shortDescription" for="short-description" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="long-description">Long description:</label>
+        <br />
+        <textarea class="form-control" formControlName="longDescription" for="long-description" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="discount">Discount:</label>
+        <br />
+        <input type="number" id="discount" formControlName="discount" placeholder="Discount..." class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="amount-available">Amount available:</label>
+        <br />
+        <input type="number" id="amount-available" formControlName="amountAvailable" placeholder="Amount available..."
+            class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="imgUrl">Image Url:</label>
+        <br />
+        <input type="text" id="imgUrl" formControlName="imgUrl" placeholder="Image Url..." class="form-control" />
+
+    </div>
+    <div class="form-group">
+        <label for="imgFile">Upload picture</label>
+        <input class="form-control-file" formControlName="imgFile" type="file" for="imgFile">
+    </div>
+    <mat-checkbox formControlName="isInstock">
+        Is instock
+    </mat-checkbox> <br />
+    <mat-checkbox formControlName="isItemOfTheWeek">
+        Is item of the week
+    </mat-checkbox><br />
+    <mat-checkbox formControlName="isHot">
+        Is hot
+    </mat-checkbox><br />
+    <div class="form-group" *ngIf="!catIds.length">
+        <label for="categoryId">Category id:</label>
+        <br />
+        <input type="text" id="categoryId" formControlName="categoryId" placeholder="Category id..."
+            class="form-control" />            
+    </div>
+    <div class="form-group">
+        <label for="categoryId">Category id:</label>
+        <select class="form-control" id="categoryId" formControlName="categoryId">
+            <option selected="true">Choose category Id</option>
+          <option *ngFor="let catId of catIds" >{{catId}}</option> 
+          <span>Selected: </span>          
+        </select>
+      </div>
+    <div class="form-group d-none">
+        <label for="dateCreated">DateCreated:</label>
+        <br />
+        <input type="text" id="dateCreated" formControlName="dateCreated" placeholder="Date Created..."
+            class="form-control" />
+
+    </div>
+
+
+    <!-- form actions -->
+    <div class="form-group py-3">
+        <button type="submit" mat-button [disabled]="productFormGroup.invalid" (click)="onSubmit()"
+            class="mat-elevation-z6 mr-2">
+            Submit
+        </button>
+        <button mat-button class="mat-elevation-z6" [routerLink]="['/admin']">
+            Cancel
+        </button>
+    </div>
+</form>
