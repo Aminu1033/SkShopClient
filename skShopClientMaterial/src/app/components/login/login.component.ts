@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   loadFormControls(){
     this.email = new FormControl('', [Validators.required, Validators.email]),
     this.password = new FormControl('', [Validators.required, Validators.minLength(6)]),
-    this.rememberMe = new FormControl('')
+    this.rememberMe = new FormControl(false)
   }
 
   loadFormGroup(){

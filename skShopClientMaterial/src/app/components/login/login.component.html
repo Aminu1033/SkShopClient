@@ -19,9 +19,10 @@
                     class="form-control" />
         
             </div>
-            <mat-checkbox  formControlName="rememberMe">
-                Remember me
-            </mat-checkbox> <br />
+             <div class="form-group">
+                <input type="checkbox" checked formControlName="rememberMe" id="rememberMe"/>
+                <label for="rememberMe"> Remember me</label>
+             </div>
             <!-- form actions -->
         <div class="form-group py-3">
             <button type="submit" mat-button (click) = "onSubmit(loginFormGroup)"
